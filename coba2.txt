@@ -1,0 +1,154 @@
+TableName: NIM; PrimaryKey: False
+Item 0: 13509914
+Item 1: 13509922
+Item 2: 13509932
+Item 3: 13509933
+Item 4: 13509955
+Item 5: 13509964
+Item 6: 13509986
+Item 7: 13509997
+Item 8: 13509998
+Item 9: 13509999
+TableName: Nama; PrimaryKey: False
+Item 0: Richard Maranata
+Item 1: Muhammad Natadin
+Item 2: Prama Diyana
+Item 3: Arin Muhammad
+Item 4: Amanah Nurahman
+Item 5: Ashar Syurahman
+Item 6: Eta Marchy
+Item 7: Denis Goran
+Item 8: Jaya Miharya
+Item 9: Yahya Sparta
+TableName: Judul; PrimaryKey: False
+Item 0: Authorship Attribution
+Item 1: Mendeteksi Live Object di Program C/C++
+Item 2: Generator Gamelan Bali dengan Sistem Berbasis Pengetahuan
+Item 3: Analisis dan Perancangan Sistem Internet Voting yang Aman untuk Pemilu Raya Keluarga Mahasiswa ITB
+Item 4: Ekstensi Chrome Penambah Fitur Facebook
+Item 5: Marketplace UMKM dengan Pemanfaatan Jejaring Sosial dan Portal Informasi Terintegrasi
+Item 6: Tailored summary untuk kumpulan makalah bahasa Indonesia
+Item 7: Recommender Engine untuk Toko Online
+Item 8: Penggunaan teknik digital watermarking untuk keamanan peta digital (teknik multiple watermarking)
+Item 9: m-ary partition function
+TableName: Bidang; PrimaryKey: False
+Item 0: AI
+Item 1: PR
+Item 2: AI
+Item 3: SI
+Item 4: PR
+Item 5: SI
+Item 6: AI
+Item 7: AI
+Item 8: BD
+Item 9: PR
+TableName: Pembimbing1; PrimaryKey: False
+Item 0: Ayudia Lea
+Item 1: Lili Ani
+Item 2: Nurul Dewi
+Item 3: Toro Kisman
+Item 4: Toro Kisman
+Item 5: Wiwin Beta
+Item 6: Ayudia Lea
+Item 7: Nurul Dewi
+Item 8: Beni Rahardian
+Item 9: Lili Ani
+TableName: Pembimbing2; PrimaryKey: False
+Item 0: 
+Item 1: 
+Item 2: 
+Item 3: Titi Surya
+Item 4: 
+Item 5: 
+Item 6: 
+Item 7: 
+Item 8: 
+Item 9: 
+TableName: Penguji; PrimaryKey: False
+Item 0: Diro Yanto
+Item 1: Dhana Dwi
+Item 2: Diro Yanto
+Item 3: Anto Dimul
+Item 4: Aksara Fulan
+Item 5: Diro Yanto
+Item 6: Rianti
+Item 7: Diro Yanto
+Item 8: Anto Dimul
+Item 9: Dhana Dwi
+TableName: Bidang1; PrimaryKey: False
+Item 0: SI
+Item 1: BD
+Item 2: SI
+Item 3: BD
+Item 4: PR
+Item 5: SI
+Item 6: AI
+Item 7: SI
+Item 8: BD
+Item 9: BD
+TableName: Bidang2; PrimaryKey: False
+Item 0: AI
+Item 1: PR
+Item 2: AI
+Item 3: SI
+Item 4: BD
+Item 5: AI
+Item 6: 
+Item 7: AI
+Item 8: SI
+Item 9: PR
+TableName: Ruangan; PrimaryKey: False
+Item 0: Ruang 7609
+Item 1: Ruang Diskusi
+Item 2: Ruang 7609
+Item 3: Ruang Staff
+Item 4: Ruang 7609
+Item 5: Ruang 7610
+Item 6: Ruang Staff
+Item 7: Ruang 7611
+Item 8: Ruang Multimedia
+Item 9: Ruang 7610
+TableName: Kode Waktu; PrimaryKey: False
+Item 0: 148
+Item 1: 258
+Item 2: 215
+Item 3: 229
+Item 4: 133
+Item 5: 157
+Item 6: 146
+Item 7: 
+Item 8: Kamis
+Item 9: Selasa
+TableName: Hari; PrimaryKey: False
+Item 0: Kamis1
+Item 1: Jumat2
+Item 2: Senin2
+Item 3: Selasa2
+Item 4: Rabu1
+Item 5: Jumat1
+Item 6: Kamis1
+Item 7: Kamis2
+Item 8: Kamis2
+Item 9: Rabu2
+TableName: Jam; PrimaryKey: False
+Item 0: 14.00
+Item 1: 14.00
+Item 2: 11.00
+Item 3: 15.00
+Item 4: 09.00
+Item 5: 13.00
+Item 6: 12.00
+Item 7: 08.00
+Item 8: 10.00
+Item 9: 15.00
+TableName: Hasil; PrimaryKey: False
+Item 0: 
+Item 1: 
+Item 2: 
+Item 3: 
+Item 4: 
+Item 5: 
+Item 6: 
+Item 7: 
+Item 8: 
+Item 9: 

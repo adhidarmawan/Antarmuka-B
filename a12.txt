@@ -1,0 +1,18 @@
+- Table: Mahasiswa
+Column: NIM; PrimaryKey: True
+Column: Nama; PrimaryKey: False
+Column: Judul; PrimaryKey: False
+Column: Bidang; PrimaryKey: False
+Column: Pembimbing1; PrimaryKey: False
+Column: Pembimbing2; PrimaryKey: False
+- Table: Dosen
+Column: Penguji; PrimaryKey: False
+Column: Bidang1; PrimaryKey: False
+Column: Bidang2; PrimaryKey: False
+- Table: Tempat
+Column: Ruangan; PrimaryKey: True
+- Table: Waktu
+Column: Kode Waktu; PrimaryKey: True
+Column: Hari; PrimaryKey: False
+Column: Jam; PrimaryKey: False
+Column: Hasil; PrimaryKey: False
