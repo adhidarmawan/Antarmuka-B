@@ -20,18 +20,37 @@ public class SaveQuery : MonoBehaviour {
 //		for(int i=0; i<addFunc.listQueries.Count;i++){
 //
 //		}
-		netMySQL.InsertionConstraintQuery(addFunc.listQueries[addFunc.listQueries.Count-1].query, addFunc.listQueries[addFunc.listQueries.Count-1].type, addFunc.listQueries[addFunc.listQueries.Count-1].desc);
+		try {
+			netMySQL.InsertionConstraintQuery(addFunc.listQueries[addFunc.listQueries.Count-1].query, addFunc.listQueries[addFunc.listQueries.Count-1].type, addFunc.listQueries[addFunc.listQueries.Count-1].desc);
+		} catch (UnityException e) {
+			Debug.Log(e.Message);
+		} catch (System.Exception e) {
+			Debug.Log(e.Message);
+		}
 		//addFunc.resultText.text = "";
 		//addFunc.listQueries.Clear();
 		//addFunc.listQueries = null;
 		//addFunc.listQueries = new List<InputQuery>();
 	}
 	public void QueryDelete(){
-		netMySQL.DeletionConstraintQuery(addFunc.listQueries[addFunc.listQueries.Count-1].query);
-		addFunc.Delete();
+		try {
+			netMySQL.DeletionConstraintQuery(addFunc.listQueries[addFunc.listQueries.Count-1].query);
+		} catch (UnityException e) {
+			Debug.Log(e.Message);
+		} catch (System.Exception e) {
+			Debug.Log(e.Message);
+		} finally {
+			addFunc.Delete ();
+		}
 	}
 	public void QueryDeleteByList(int number){
-		netMySQL.DeletionConstraintQuery(addFunc.listQueries[number].query);
+		try {
+			netMySQL.DeletionConstraintQuery(addFunc.listQueries[number].query);
+		} catch (UnityException e) {
+			Debug.Log(e.Message);
+		} catch (System.Exception e) {
+			Debug.Log(e.Message);
+		}
 		//Debug.Log("delete: "+addFunc.listQueries[number].query);
 	}
 
