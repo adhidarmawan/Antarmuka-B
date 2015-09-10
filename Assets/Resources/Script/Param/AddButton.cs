@@ -62,54 +62,55 @@ public class AddButton : MonoBehaviour {
 //		queryDependent.QuerySave();
 		//resultText.text = listQueries[0].desc;
 		//variant 3
-		List<int> falseItemI = new List<int>();
-		List<int> falseItemJ = new List<int>();
-		List<int> tempExceptionI = new List<int>();
-		List<int> tempExceptionJ = new List<int>();
-		for(int i=0; i<DataContainer.relationshipTable2.Count; i++){
-			string tempCN = DataContainer.relationshipTable2[i].name;
-			for(int j=0; j<DataContainer.relationshipTable2[i].column.Count;j++){
-				if(!DataContainer.relationshipTable2[i].column[j].primaryKey){
-					falseItemI.Add(i);
-					falseItemJ.Add(j);
-					string tempR = DataContainer.relationshipTable2[i].column[j].datas[0];
-					for(int k=i; k<DataContainer.relationshipTable2.Count; k++){
-						for(int l=j; l<DataContainer.relationshipTable2[k].column.Count;l++){
-							if(DataContainer.relationshipTable2[k].name == tempR){
-								if(DataContainer.relationshipTable2[k].column[l].datas[0] == tempCN){
-									if(DataContainer.relationshipTable2[k].column[l].datas[1] == ""){
-										tempExceptionI.Add(k);
-										tempExceptionJ.Add(l);
-										Debug.Log("yay relation exception "+l);
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		for(int i=0; i<tempExceptionI.Count; i++){
-			string result = "SELECT IF (EXISTS (SELECT * FROM (SELECT COUNT( * ) AS JUMLAH FROM (SELECT ";
-			if(i<1)	{
-				if(DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[1] == "")
-					result = result + DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[2] +" FROM "/*+DataContainer.relationshipTable2[falseItemI[0]].name+*/+StaticParameter.database+" ";
-				else 
-					result = result + DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[2] +" FROM "/*+DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[1]+*/+StaticParameter.database+" ";
-			}
-			for(int j=1; j<falseItemI.Count;j++){
-				if(DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[1] == "")
-					result = result + "UNION SELECT "+DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[2]+" FROM "/*+DataContainer.relationshipTable2[falseItemI[j]].name+*/+StaticParameter.database+" ";
-				else
-					result = result + "UNION SELECT "+DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[2]+" FROM "/*+DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[1]+*/+StaticParameter.database+" ";
-			}
-			//result = result + "UNION SELECT "+DataContainer.relationshipTable2[tempExceptionI[i]].column[tempExceptionJ[i]].datas[2]+" FROM "+DataContainer.relationshipTable2[tempExceptionI[i]].name+" ";
-			result = result +") AS union GROUP BY "+DataContainer.relationshipTable2[tempExceptionI[i]].column[tempExceptionJ[i]].datas[2]+", "+parameterPool+") AS A WHERE ( JUMLAH > 1)),1 ,0) AS RESULT";
-			InputQuery input = new InputQuery();
-			input.Init(result,"hard", DataContainer.relationshipTable2[tempExceptionI[i]].column[tempExceptionJ[i]].datas[2]+" unik ");
-			listQueries.Add(input);
-			queryDependent.QuerySave();
-		}
+//		List<int> falseItemI = new List<int>();
+//		List<int> falseItemJ = new List<int>();
+//		List<int> tempExceptionI = new List<int>();
+//		List<int> tempExceptionJ = new List<int>();
+//		for(int i=0; i<DataContainer.relationshipTable2.Count; i++){
+//			string tempCN = DataContainer.relationshipTable2[i].name;
+//			for(int j=0; j<DataContainer.relationshipTable2[i].column.Count;j++){
+//				if(!DataContainer.relationshipTable2[i].column[j].primaryKey){
+//					falseItemI.Add(i);
+//					falseItemJ.Add(j);
+//					string tempR = DataContainer.relationshipTable2[i].column[j].datas[0];
+//					for(int k=i; k<DataContainer.relationshipTable2.Count; k++){
+//						for(int l=j; l<DataContainer.relationshipTable2[k].column.Count;l++){
+//							if(DataContainer.relationshipTable2[k].name == tempR){
+//								if(DataContainer.relationshipTable2[k].column[l].datas[0] == tempCN){
+//									if(DataContainer.relationshipTable2[k].column[l].datas[1] == ""){
+//										tempExceptionI.Add(k);
+//										tempExceptionJ.Add(l);
+//										Debug.Log("yay relation exception "+l);
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+//		for(int i=0; i<tempExceptionI.Count; i++){
+//			string result = "SELECT IF (EXISTS (SELECT * FROM (SELECT COUNT( * ) AS JUMLAH FROM (SELECT ";
+//			if(i<1)	{
+//				if(DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[1] == "")
+//					result = result + DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[2] +" FROM "/*+DataContainer.relationshipTable2[falseItemI[0]].name+*/+StaticParameter.database+" ";
+//				else 
+//					result = result + DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[2] +" FROM "/*+DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[1]+*/+StaticParameter.database+" ";
+//			}
+//			for(int j=1; j<falseItemI.Count;j++){
+//				if(DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[1] == "")
+//					result = result + "UNION SELECT "+DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[2]+" FROM "/*+DataContainer.relationshipTable2[falseItemI[j]].name+*/+StaticParameter.database+" ";
+//				else
+//					result = result + "UNION SELECT "+DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[2]+" FROM "/*+DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[1]+*/+StaticParameter.database+" ";
+//			}
+//			//result = result + "UNION SELECT "+DataContainer.relationshipTable2[tempExceptionI[i]].column[tempExceptionJ[i]].datas[2]+" FROM "+DataContainer.relationshipTable2[tempExceptionI[i]].name+" ";
+//			result = result +") AS union GROUP BY "+DataContainer.relationshipTable2[tempExceptionI[i]].column[tempExceptionJ[i]].datas[2]+", "+parameterPool+") AS A WHERE ( JUMLAH > 1)),1 ,0) AS RESULT";
+//			InputQuery input = new InputQuery();
+//			input.Init(result,"hard", DataContainer.relationshipTable2[tempExceptionI[i]].column[tempExceptionJ[i]].datas[2]+" unik ");
+//			listQueries.Add(input);
+//			queryDependent.QuerySave();
+//		}
+		queryDependent.netMySQL.DeleteRelationshipTable3(parameterPool);
 		for(int i=0; i<resultList.resultLists.Count;i++){
 			//resultText.text = resultText.text+"\n"+listQueries[i].desc;
 			if(i<listQueries.Count){
@@ -119,10 +120,11 @@ public class AddButton : MonoBehaviour {
 				resultList.resultLists[i].gameObject.SetActive(false);
 			}
 		}
-		Debug.Log("finish adding");
+		Debug.Log("finish adding2");
 	}
 
 	public void DetectGroup(){
+
 		List<int> falseItemI = new List<int>();
 		List<int> falseItemJ = new List<int>();
 		List<int> tempExceptionI = new List<int>();
@@ -134,8 +136,8 @@ public class AddButton : MonoBehaviour {
 					falseItemI.Add(i);
 					falseItemJ.Add(j);
 					string tempR = DataContainer.relationshipTable2[i].column[j].datas[0];
-					for(int k=i; k<DataContainer.relationshipTable2.Count; k++){
-						for(int l=j; l<DataContainer.relationshipTable2[k].column.Count;l++){
+					for(int k=0; k<DataContainer.relationshipTable2.Count; k++){
+						for(int l=0; l<DataContainer.relationshipTable2[k].column.Count;l++){
 							if(DataContainer.relationshipTable2[k].name == tempR){
 								if(DataContainer.relationshipTable2[k].column[l].datas[0] == tempCN){
 									if(DataContainer.relationshipTable2[k].column[l].datas[1] == ""){
@@ -151,40 +153,57 @@ public class AddButton : MonoBehaviour {
 			}
 		}
 		string tempDetect = "";
+		int x = 0;
 		for(int i=0; i<tempExceptionI.Count; i++){
-			if(tempDetect!=DataContainer.relationshipTable2[falseItemI[i]].column[falseItemJ[i]].datas[0]){
+			/*if(tempDetect!=DataContainer.relationshipTable2[falseItemI[i]].column[falseItemJ[i]].datas[0]){
 				tempDetect = DataContainer.relationshipTable2[falseItemI[i]].column[falseItemJ[i]].datas[0];
-				Debug.Log("detect: "+tempDetect);
-				string result = "SELECT IF (EXISTS (SELECT * FROM (SELECT COUNT( * ) AS JUMLAH FROM (SELECT ";
-				if(i<1)	{
-					if(DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[1] == "")
-						result = result + DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[2] +" FROM "/*+DataContainer.relationshipTable2[falseItemI[0]].name+*/+StaticParameter.database+" ";
-					else 
-						result = result + DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[2] +" FROM "/*+DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[1]+*/+StaticParameter.database+" ";
+				*/
+			string query = "SELECT IF (EXISTS (SELECT * FROM (SELECT COUNT( * ) AS JUMLAH FROM (SELECT ";
+				// belum ada entry, tambahkan entry baru
+				// Debug.Log("detect: "+tempDetect);
+					// if(DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[1] == "")
+			query += DataContainer.relationshipTable2[falseItemI[i]].column[falseItemJ[i]].datas[2] +" FROM "
+					+StaticParameter.database+" ";
+					/*else 
+						query += DataContainer.relationshipTable2[falseItemI[0]].column[falseItemJ[0]].datas[2] +" FROM "
+							+StaticParameter.database+" ";
+					*/
+
+			string checkName = DataContainer.relationshipTable2[falseItemI[i]].column[falseItemJ[i]].datas[0];
+			Debug.Log(checkName);
+				for(int j=0; j<DataContainer.relationshipTable2.Count;j++){	
+					for(int k = 0; k < DataContainer.relationshipTable2[j].column.Count; k++) {
+
+						if(checkName == DataContainer.relationshipTable2[j].column[k].datas[0]) {
+						//if(DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[1] == "")
+							query += "UNION SELECT "+DataContainer.relationshipTable2[j].column[k].datas[2]+" FROM "/*+DataContainer.relationshipTable2[falseItemI[j]].name+*/
+								+StaticParameter.database+" ";
+						}
+					//else
+					//	query += "UNION SELECT "+DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[2]+" FROM "/*+DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[1]+*/
+					//		+StaticParameter.database+" ";
+					}
 				}
-				for(int j=1; j<falseItemI.Count;j++){
-					if(DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[1] == "")
-						result = result + "UNION SELECT "+DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[2]+" FROM "/*+DataContainer.relationshipTable2[falseItemI[j]].name+*/+StaticParameter.database+" ";
-					else
-						result = result + "UNION SELECT "+DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[2]+" FROM "/*+DataContainer.relationshipTable2[falseItemI[j]].column[falseItemJ[j]].datas[1]+*/+StaticParameter.database+" ";
-				}
+
 				//result = result + "UNION SELECT "+DataContainer.relationshipTable2[tempExceptionI[i]].column[tempExceptionJ[i]].datas[2]+" FROM "+DataContainer.relationshipTable2[tempExceptionI[i]].name+" ";
-				result = result +") AS union GROUP BY "+DataContainer.relationshipTable2[tempExceptionI[i]].column[tempExceptionJ[i]].datas[2]+", "+parameterPool+") AS A WHERE ( JUMLAH > 1)),1 ,0) AS RESULT";
-				InputQuery input = new InputQuery();
-				input.Init(result,"hard", DataContainer.relationshipTable2[tempExceptionI[i]].column[tempExceptionJ[i]].datas[2]+" unik ");
-				listQueries.Add(input);
-				queryDependent.QuerySave();
-			}
+			query += ") AS gabung GROUP BY " + DataContainer.relationshipTable2 [falseItemI [i]].column [falseItemJ [i]].datas [2] + ", " + parameterPool + ") AS A WHERE ( JUMLAH > 1)),1 ,0) AS RESULT";
+			InputQuery input = new InputQuery ();
+			input.Init (query, "hard", DataContainer.relationshipTable2 [tempExceptionI [i]].column [tempExceptionJ [i]].datas [2] + " unik ");
+			listQueries.Add (input);
+			queryDependent.QuerySave ();
+			//}
 		}
-		for(int i=0; i<resultList.resultLists.Count;i++){
-			//resultText.text = resultText.text+"\n"+listQueries[i].desc;
-			if(i<listQueries.Count){
-				resultList.labels[i].text = listQueries[i].desc;
-				resultList.resultLists[i].gameObject.SetActive(true);
-			}else{
-				resultList.resultLists[i].gameObject.SetActive(false);
-			}
-		}
+
+//		for(int i=0; i<resultList.resultLists.Count;i++){
+//			//resultText.text = resultText.text+"\n"+listQueries[i].desc;
+//			if(i<listQueries.Count){
+//				resultList.labels[i].text = listQueries[i].desc;
+//				resultList.resultLists[i].gameObject.SetActive(true);
+//			}else{
+//				resultList.resultLists[i].gameObject.SetActive(false);
+//			}
+//		}
+		//queryDependent.netMySQL.DeleteRelationshipTable3(parameterPool);
 		Debug.Log("finish adding");
 	}
 

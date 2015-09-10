@@ -105,6 +105,11 @@ public class NetMySQL : MonoBehaviour {
 		string tempQuery = "DELETE FROM `relation` WHERE `Atribut`='"+attribute+"'";
 		DoQuery(tempQuery);
 	}
+	public void DeleteRelationshipTable3(string attribute){
+		string tempQuery = "DELETE FROM `processconstraint` WHERE `description`='"+attribute+" unik'";
+		Debug.Log (tempQuery);
+		DoQuery(tempQuery);
+	}
 	public void TryReadDB(string sqlQuery){
 		IDbCommand dbCommand = dbConnection.CreateCommand();
 		dbCommand.CommandText = sqlQuery;
