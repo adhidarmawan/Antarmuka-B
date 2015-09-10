@@ -43,8 +43,13 @@ public class AddButton : MonoBehaviour {
 			string result = "SELECT IF (EXISTS (SELECT * FROM (SELECT COUNT( * ) AS JUMLAH FROM "+StaticParameter.database+" GROUP BY "+ tempColumns[i] +", "+parameterPool+" ) AS A WHERE ( JUMLAH > 1)),1 ,0) AS RESULT";
 			InputQuery input = new InputQuery();
 			input.Init(result,"hard", tempColumns[i]+ " unik");
-			listQueries.Add(input);
-			queryDependent.QuerySave();
+			if(tempColumns[i]==parameterPool){
+				queryDependent.netMySQL.DeleteRelationshipTable3(parameterPool);
+				Debug.Log("the deleted constraint: "+tempColumns[i]);
+			}else{
+				listQueries.Add(input);
+				queryDependent.QuerySave();
+			}
 		}
 		//variant type 2
 //		string result = "SELECT IF (EXISTS (SELECT * FROM (SELECT COUNT( * ) AS JUMLAH FROM (";
@@ -110,7 +115,7 @@ public class AddButton : MonoBehaviour {
 //			listQueries.Add(input);
 //			queryDependent.QuerySave();
 //		}
-		queryDependent.netMySQL.DeleteRelationshipTable3(parameterPool);
+//		queryDependent.netMySQL.DeleteRelationshipTable3(parameterPool);
 		for(int i=0; i<resultList.resultLists.Count;i++){
 			//resultText.text = resultText.text+"\n"+listQueries[i].desc;
 			if(i<listQueries.Count){
